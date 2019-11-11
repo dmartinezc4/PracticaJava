@@ -2,6 +2,7 @@ package practica;
 
 
 import java.util.InputMismatchException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,25 +19,47 @@ public class Menu {
 		
 		UserList users=new UserList();
 		
-		BookShelf books= new BookShelf();
-		
-		CinemaSection films= new CinemaSection();
-		
+		Shelve items=new Shelve();
 		
 		if(users.isEmpty()==true) {
 			System.out.println("Estoy vacia");
 		}
+		System.out.println("Please select language, 1 spanish, 2 english");
+		Scanner lang=new Scanner(System.in);
+		int language=lang.nextInt();
+		boolean selected=false;
+		String label="";
+		while(!selected){
+			if(language==1) {
+				System.out.println("Ha seleccionado español, de españa");
+				label="es_ES";
+				selected=true;
+			}else if(language==2) {
+				System.out.println("You selected UK english");
+				label="en_UK";
+				selected=true;
+			}else {
+				System.out.println("Entry not recognized, please choose between the avaiable options");
+				language=lang.nextInt();
+			}
+			
+		}
+		
+		
+		
+		ResourceBundle languages= ResourceBundle.getBundle(label);//Initialize bundle with languages
+		
 		while(!salir) {
 			if(registered==true) {
 				System.out.println("Logged " );
 			}
-			System.out.println("1. Sign in ");
-			System.out.println("2. Log in ");
-			System.out.println("3. Help ");
-			System.out.println("4. Books");
-			System.out.println("5. Films ");
-			System.out.println("6. Log out ");
-			System.out.println("7. Salir ");
+			System.out.println("1." +languages.getString("Sign_in"));
+			System.out.println("2." +languages.getString("Log_in"));
+			System.out.println("3." +languages.getString("Help"));
+			System.out.println("4." +languages.getString("Books"));
+			System.out.println("5." +languages.getString("Films"));
+			System.out.println("6." +languages.getString("Log_out"));
+			System.out.println("7." +languages.getString("Exit"));
 			try {
 			System.out.println("Write one of the options");
 			option=sn.nextInt();
@@ -46,15 +69,15 @@ public class Menu {
 			Scanner sn2=new Scanner(System.in);
 			
 			switch(option) {
-			case 1:
+			case 1://Register 1st time
 				
-				System.out.println("What's your name?");
+				System.out.println(languages.getString("Name(?)"));
 				Scanner n=new Scanner(System.in);
 				name=n.nextLine();
-				System.out.println("What's your surname?");
+				System.out.println(languages.getString("Surname(?)"));
 				Scanner s=new Scanner(System.in);
 				surname=s.nextLine();
-				System.out.println("What's your ID?");
+				System.out.println(languages.getString("ID(?)"));
 				Scanner i=new Scanner(System.in);
 				id=i.nextInt();
 				User a=new User (id, name, surname);
@@ -62,16 +85,16 @@ public class Menu {
 				registered=true;
 				break;
 				
-			case 2:
+			case 2://Log with an actual account
 				
-				System.out.println("Log in");
-				System.out.println("What's your name?");
+				System.out.println(languages.getString("Log_in"));
+				System.out.println(languages.getString("Name(?)"));
 				n=new Scanner(System.in);
 				name=n.nextLine();
-				System.out.println("What's your surname?");
+				System.out.println(languages.getString("Surname(?)"));
 				s=new Scanner(System.in);
 				surname=s.nextLine();
-				System.out.println("What's your ID?");
+				System.out.println(languages.getString("ID(?)"));
 				i=new Scanner(System.in);
 				id=i.nextInt();
 				User log=new User(id,name,surname);
@@ -80,105 +103,170 @@ public class Menu {
 					registered=true;
 				}else {//Pues no existe
 					registered=false;
-					System.out.println("Failed to log in; maybe you misspell your password or your user");
+					System.out.println(languages.getString("Error_register"));
 				}
 				break;
 		
-			case 3:
-				System.out.println("Options 1 allows you to register so you can follow "
-						+"Option 2 allows for the already registed user, to do stuff with the library books" 
-						+ "steps to take a book;4-6 let you know if you can look'em,take'em or put new ones ");
+			case 3://Help
+				
+				System.out.println(languages.getString("Help_1"));
+				System.out.println(languages.getString("Help_2"));
+				System.out.println(languages.getString("Help_3"));
+				System.out.println(languages.getString("Help_6"));
+				System.out.println(languages.getString("Help_7"));
 				break;
-			case 4:
-				System.out.println("These are the books avaible right now");
-				books.showAll();
-				System.out.println("1. Take a film \n 2. Find a film \n 3. Remove a film ");
+				
+			case 4://Books
+				
+				System.out.println(languages.getString("B_avaiable"));
+				System.out.println(languages.getString("B_options"));
 				option2=sn2.nextInt();
+				String na;
+				String auth;
+				String gen;
+				int pag;
+				String is;
 				if(registered==true) {
 					switch (option2) {
-					case 1:
+					case 1://take
 						
+						System.out.println(languages.getString("B_in"));
+						na=sn2.nextLine();
+						auth=sn2.nextLine();
+						gen=sn2.nextLine();
+						pag=sn2.nextInt();
+						is=sn2.nextLine();
+						Book take=new Book(na,auth,gen,pag,is);
+						boolean exists=items.find(take);
+						if(exists) {
+							System.out.println(users.getLoggedUser().getName());							
+						}else {
+							System.out.println(languages.getString("Not_found"));
+						}
 						break;
-					case 2:
-						String na;
-						String auth;
-						String gen;
-						int pag;
-						String is;
-						System.out.println("Introduce name,author,genre, pages, and the ISBN each one separately");
+					case 2://Find
+						System.out.println(languages.getString("B_in"));
 						na=sn2.nextLine();
 						auth=sn2.nextLine();
 						gen=sn2.nextLine();
 						pag=sn2.nextInt();
 						is=sn2.nextLine();
 						
-						break;
-					case 3:
-						
-						break;
-					}
-				}else {
-					System.out.println("You need to log in/Sign up in order to access the books");
-				}
-				break;
-				
-			case 5:
-				System.out.println("These are the avaible films right now");
-				films.showAll();
-				System.out.println("1. Take a book 2. Find a book 3. Remove a book \n");
-				option2=sn2.nextInt();
-				if(registered==true) {
-					switch (option2) {
-					case 1:
-						
-						break;
-					case 2:
-						String na;
-						String act;
-						String dir;
-						String gen;
-						int d;
-						int m;
-						int y;//Variables in order to create the film we are looking for
-						System.out.println("Introduce name,actor,director,genre,release day,release month and release year each one separately ");
-						na=sn2.nextLine();
-						act=sn2.nextLine();
-						dir=sn2.nextLine();
-						gen=sn2.nextLine();
-						d=sn.nextInt();
-						m=sn.nextInt();
-						y=sn.nextInt();
-						Film search=new Film(na,act,dir,gen,d,m,y);
-						boolean found=films.find(search);
-						if(found==true) {
-							System.out.println("There are aviable copies");
+						Book find=new Book(na,auth,gen,pag,is);
+						boolean existe=items.find(find);
+						if(existe) {
+							System.out.println(languages.getString("Exists"));
 						}else {
-							System.out.println("Film not found maybe you misspelled the actor/actress or director's name wrong");
+							System.out.println(languages.getString("Not_found"));
+						}
+						break;
+					case 3://Remove
+						System.out.println(languages.getString("B_in"));
+						na=sn2.nextLine();
+						auth=sn2.nextLine();
+						gen=sn2.nextLine();
+						pag=sn2.nextInt();
+						is=sn2.nextLine();
+						
+						Book no=new Book(na,auth,gen,pag,is);
+						existe=items.find(no);
+						if(existe) {
+							items.remove(no);
+						}else {
+							System.out.println(languages.getString("Not_found"));
 						}
 						
 						break;
-					case 3: 
+					}
+				}else {
+					System.out.println(languages.getString("Need_to_log"));
+				}
+				break;
+				
+			case 5://Films
+				System.out.println(languages.getString("F_avaible"));
+				items.show();
+				System.out.println(languages.getString("F_options"));
+				option2=sn2.nextInt();
+				boolean exists;
+				String na1,act,dir,gen1;
+				int d,m,y;//Variables in order to create the film we are looking for
+				if(registered==true) {
+					switch (option2) {
+					case 1://Take
 						
+						na1=sn2.nextLine();
+						act=sn2.nextLine();
+						dir=sn2.nextLine();
+						gen1=sn2.nextLine();
+						d=sn.nextInt();
+						m=sn.nextInt();
+						y=sn.nextInt();
+						Film take=new Film(na1,act,dir,gen1,y);
+						exists=items.find(take);
+						if(exists) {
+							System.out.println(users.getLoggedUser().getName());
+						}else {
+							System.out.println(languages.getString("Need_to_log"));
+						}
+						break;
+					case 2://Find 
+						System.out.println(languages.getString("F_in"));
+						na1=sn2.nextLine();
+						act=sn2.nextLine();
+						dir=sn2.nextLine();
+						gen1=sn2.nextLine();
+						d=sn.nextInt();
+						m=sn.nextInt();
+						y=sn.nextInt();
+						Film search=new Film(na1,act,dir,gen1,y);
+						boolean found=items.find(search);
+						if(found==true) {
+							System.out.println(languages.getString("Exists"));
+						}else {
+							System.out.println(languages.getString("Not_found"));
+						}
+						
+						break;
+						
+						
+					case 3://remove
+						System.out.println(languages.getString("B_in"));
+						na1=sn2.nextLine();
+						act=sn2.nextLine();
+						dir=sn2.nextLine();
+						gen1=sn2.nextLine();
+						d=sn.nextInt();
+						m=sn.nextInt();
+						y=sn.nextInt();
+						
+						Film no=new Film(na1,act,dir,gen1,y);
+						exists=items.find(no);
+						if(exists) {
+							items.remove(no);
+						}else {
+							System.out.println(languages.getString("Not_found"));
+						}
 						break;
 					}
 				}else {
-					System.out.println("You need to log in/Sign up in order to access the films");
+					System.out.println(languages.getString("Need_to_log"));
 				}
 				break;
 				
 			case 6:
-				System.out.println("Thanks for using our services");
+				System.out.println(languages.getString("Ty"));
 				registered=false;
 				break;
 				
 			case 7:
-				System.out.println("Goodbye!");
+				System.out.println(languages.getString("Bye"));
 				salir=true;
 				break;
 			}
 			
 			}catch(InputMismatchException e) {
-				System.out.println("You must insert a number");
+				System.out.println(languages.getString("Error_number"));
 				sn.next();
 			}
 		}

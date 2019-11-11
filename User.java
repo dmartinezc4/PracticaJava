@@ -1,15 +1,32 @@
 package practica;
+import java.util.*;
 
 public class User {
 
 	private String name;
 	private String surname;
 	private int dni;
+	boolean logged;
 	
+	
+	
+	public boolean isLogged() {
+		return logged;
+	}
+	public void setLogged(boolean logged) {
+		this.logged = logged;
+	}
 	public User(int dni,String name,String surname) {
 		this.dni=dni;
 		this.name=name;
 		this.surname=surname;
+		this.logged=false;
+	}
+	public User(int dni,String name,String surname,boolean a) {
+		this.dni=dni;
+		this.name=name;
+		this.surname=surname;
+		this.logged=a;
 	}
 	
 	public String getName() {
@@ -31,5 +48,3 @@ public class User {
 		this.dni=dni;
 	}
 }
-
-
