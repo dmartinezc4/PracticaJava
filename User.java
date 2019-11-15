@@ -1,7 +1,7 @@
 package practica;
 import java.util.*;
 
-public class User {
+public class User implements Vectorinterfaces{
 
 	private String name;
 	private String surname;
@@ -46,5 +46,10 @@ public class User {
 	}
 	public void setDni(int dni) {
 		this.dni=dni;
+	}
+	
+	public void show() {
+		System.out.println(this.name +" "+this.surname+" ID: "+this.dni);
+		
 	}
 }
