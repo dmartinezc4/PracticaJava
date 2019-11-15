@@ -31,7 +31,7 @@ public class Menu {
 		String label="";
 		while(!selected){
 			if(language==1) {
-				System.out.println("Ha seleccionado español, de españa");
+				System.out.println("Ha seleccionado espaÃ±ol, de espaÃ±a");
 				label="es_ES";
 				selected=true;
 			}else if(language==2) {
@@ -44,8 +44,6 @@ public class Menu {
 			}
 			
 		}
-		
-		
 		
 		ResourceBundle languages= ResourceBundle.getBundle(label);//Initialize bundle with languages
 		

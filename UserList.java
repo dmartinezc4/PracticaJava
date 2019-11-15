@@ -25,7 +25,6 @@ public class UserList implements Vectorinterfaces{
 		
 		public boolean find(User you) {
 			for(int i=0;i<userlist.size();i++){
-				showAt(i);
 				if(userlist.get(i).getName().equalsIgnoreCase(you.getName())) {
 					return true;
 				}

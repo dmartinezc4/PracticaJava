@@ -12,7 +12,7 @@ public class Shelve implements Vectorinterfaces{
 		items.add(new Book("Quijote","Cervantes","Fantasia",100000,"1056798342"));
 		items.add(new Book("Protagonista","Jose","Fantasia",100,"3625984710"));
 		items.add(new Book("From Hell","Alan Moore","Terror",2000,"02356897414"));
-		items.add(new Book("The Dark Night Rises","Frank Miller","Superhéroes",100000,"4895623170"));
+		items.add(new Book("The Dark Night Rises","Frank Miller","SuperhÃ©roes",100000,"4895623170"));
 		//add films
 		items.add(new Film("Joker","Joaquin Phoenix","Todd Phillips","Action",2019));
 		items.add(new Film("Grave of the firelies","Akiyusi Nosaka","Isao Takahata","Suspense",2003));
