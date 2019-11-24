@@ -12,7 +12,7 @@ public class Shelve implements Vectorinterfaces{
 		items.add(new Book("Quijote","Cervantes","Fantasia",100000,"1056798342"));
 		items.add(new Book("Protagonista","Jose","Fantasia",100,"3625984710"));
 		items.add(new Book("From Hell","Alan Moore","Terror",2000,"02356897414"));
-		items.add(new Book("The Dark Night Rises","Frank Miller","SuperhÃ©roes",100000,"4895623170"));
+		items.add(new Book("The Dark Night Rises","Frank Miller","Superhéroes",100000,"4895623170"));
 		//add films
 		items.add(new Film("Joker","Joaquin Phoenix","Todd Phillips","Action",2019));
 		items.add(new Film("Grave of the firelies","Akiyusi Nosaka","Isao Takahata","Suspense",2003));
@@ -88,6 +88,25 @@ public class Shelve implements Vectorinterfaces{
 			}
 		}
 	}
-	
+	public Vector<String> sortByName() {
+		//Por alguna razon no me deja hacer sort de un vector de items sin pasarlo a list; y si lo hago cosas del menu y otros metodos empiezan a fallar
+		//Asi que soy capaz de ordenartelo pero solo ciertas partes del item en si
+		Vector<String>names=new Vector<String>();
+		for(int i=0;i<items.size();i++) {
+			names.add(items.get(i).getName());
+		}
+		Collections.sort(names);
+		return names;
+	}
+	public Vector<String> sortByGenre() {
+		//Por alguna razon no me deja hacer sort de un vector de items sin pasarlo a list; y si lo hago cosas del menu y otros metodos empiezan a fallar
+		//Asi que soy capaz de ordenartelo pero solo ciertas partes del item en si
+		Vector<String>genre=new Vector<String>();
+		for(int i=0;i<items.size();i++) {
+			genre.add(items.get(i).getGenre());
+		}
+		Collections.sort(genre);
+		return genre;
+	}
 
 }

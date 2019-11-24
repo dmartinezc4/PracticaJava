@@ -31,7 +31,7 @@ public class Menu {
 		String label="";
 		while(!selected){
 			if(language==1) {
-				System.out.println("Ha seleccionado espaÃ±ol, de espaÃ±a");
+				System.out.println("Ha seleccionado español, de españa");
 				label="es_ES";
 				selected=true;
 			}else if(language==2) {
@@ -258,11 +258,14 @@ public class Menu {
 					registered=false;
 					break;
 				case 7:
-					Item a1= new Book("Hamlet","Shakespeare","Historico",200,"19483956");
-					Item a2= new Book("Nuestro comÃºn amigo","Charles Dickens","Ficcion",180,"1894563");
-					Item b1= new Film("Pulp Fiction","Samuel L Jackson","Tarantino","Accion",1995);
-					Item b2= new Film("CrepÃºsculo","Edward Van Cullen","Catherine Hardwicke","Drama",2008);
-					Item [][] segundamano= {{a1,a2},{b1,b2}};
+					//Basicamente esto es el array bidimensional, el cual te permite coger cosas sin tener en cuenta un tiempo de devolucion
+					Book a1= new Book("Hamlet","Shakespeare","Historico",200,"19483956");
+					Book a2= new Book("Nuestro común amigo","Charles Dickens","Ficcion",180,"1894563");
+					Book a3= new Book("El mundo de Sofia","Jostein Gaarder","Filosófico",500,"8896513");
+					Film b1= new Film("Pulp Fiction","Samuel L Jackson","Tarantino","Accion",1995);
+					Film b2= new Film("Crepúsculo","Edward Van Cullen","Catherine Hardwicke","Drama",2008);
+					Film b3= new Film("Blade Runner","Harruson Ford","Ridley Scott","Ciencia Ficción",1982);
+					Item [][] segundamano= {{a1,a2,a3},{b1,b2,b3}};
 					System.out.println("this are the avaiable books that don't require a renting method avaiable");
 					for(int k=0;k<segundamano[0].length;k++) {
 						segundamano[0][k].show();
@@ -278,21 +281,26 @@ public class Menu {
 							System.out.println("2. Coger una pelicula");
 							System.out.println("3. Salir");
 							option=sn.nextInt();
+							int index;
 							if(option<4 && option>0) {
 								switch (option) {
 								case 1:
-									System.out.println("dame el nombre del que quieras sacar");
-									
+									System.out.println("Dime el indice del libro que quieras sacar (siendo el primero 1)");
+									index=sn.nextInt();
 									for(int j=0;j<segundamano[0].length;j++) {
-										
+
 									}
-									users.getLoggedUser().addBook();
+									users.getLoggedUser().addItem(segundamano[0][index]);
 									break;
 
 								case 2:
+									System.out.println("Dime el indice del libro que quieras sacar (siendo el primero 1)");
+									index=sn.nextInt();
+									users.getLoggedUser().addItem(segundamano[1][index]);
 									break;
 
 								case 3: 
+									System.out.println();
 									break;
 
 								}
@@ -310,6 +318,23 @@ public class Menu {
 					System.out.println(languages.getString("Bye"));
 					salir=true;
 					break;
+				case 9:
+					System.out.println("Este el buzon de sugerencias, introduce las de 1 en 1 (primero la fecha de la sugerencia y luego la sugerencia en si); una vez metida la sugerencia ");
+					int keepgoing=1;
+					Scanner stringscan=new Scanner(System.in);
+					GenericVector sugerencias = new GenericVector();
+					while(keepgoing==1) {
+					
+					
+					int date_input=stringscan.nextInt();
+					sugerencias.add(date_input);
+					String data_input=stringscan.nextLine();
+					System.out.println("Quieres continuar?");
+					keepgoing=sn.nextInt();
+					}
+					System.out.println("Estas son las sugerencias que tenemos de nuestros usuarios");
+					sugerencias.show();				
+					break;
 				}
 
 			}catch(InputMismatchException e) {
@@ -319,3 +344,4 @@ public class Menu {
 		}
 	}
 }
+

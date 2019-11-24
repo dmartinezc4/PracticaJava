@@ -37,4 +37,5 @@ public abstract class Item {
 	public void show() {
 		
 	}
+	public abstract double getValue();
 }
