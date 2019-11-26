@@ -17,5 +17,11 @@ class FilmTest {
 		assertEquals(a.getYearrelease(),2013);
 		
 	}
+	
+	@Test
+	void testGetValue() {
+		assertEquals(283651.83,a.getValue());
+	}
+	
 
 }

@@ -12,7 +12,9 @@ class ShelveTest {
 	@Test
 	void test() {
 		a.add(b);
-		a.find(b);
+		assertEquals(true,a.find(b));
 	}
+	
+	
 
 }
