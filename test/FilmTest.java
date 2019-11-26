@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class FilmTest {
 
 	Film a =new Film("El hombre de acero","Henry Cavill","Zack Snyder","Accion",2013);
+	Film b =new Film("Joker","Joaquin","Zack Snyder","Meta",2019);
 	
 	@Test
 	void testFilm() {
@@ -19,8 +20,18 @@ class FilmTest {
 	}
 	
 	@Test
-	void testGetValue() {
+	void testGetValue() {//Lo mismo que con el de Book; me da error como test pero esto es lo que me sale en la calculadora
 		assertEquals(283651.83,a.getValue());
+	}
+	
+	@Test
+	void testGetMaximo() {
+		assertEquals(b,Film.Maximo(a, b));
+	}
+	
+	@Test
+	void testGetMinimo() {
+		assertEquals(a,Film.Minimo(a, b));
 	}
 	
 
