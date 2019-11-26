@@ -40,12 +40,12 @@ public class Book extends Item{
 		}else {
 			suma=suma+30;
 		}
-		if(super.getGenre()=="fantasia"||super.getGenre()=="ficcion"||super.getGenre()=="accion"||super.getGenre()=="filsófico") {
+		if(super.getGenre()=="fantasia"||super.getGenre()=="ficcion"||super.getGenre()=="accion"||super.getGenre()=="filsÃ³fico") {
 			suma=suma+30;
 		}else {
 			suma=suma+50;
 		}
-		suma=(float) (suma+Math.pow(pages/5, 2));
+		suma=(float) (suma+Math.pow(pages/100, 2));
 		
 		if(ISBN.charAt(0)=='1'||ISBN.charAt(0)=='9'||ISBN.charAt(0)=='7'||ISBN.charAt(0)=='3'||ISBN.charAt(0)=='5') {
 			suma=suma*2;

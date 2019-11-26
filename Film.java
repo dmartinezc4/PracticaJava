@@ -37,12 +37,12 @@ public class Film extends Item{
 		}else {
 			suma=suma+30;
 		}
-		if(super.getGenre()=="fantasia"||super.getGenre()=="ficcion"||super.getGenre()=="accion"||super.getGenre()=="filsófico") {
+		if(super.getGenre()=="Fantasia"||super.getGenre()=="Ficcion"||super.getGenre()=="Accion"||super.getGenre()=="FilsÃ³fico") {
 			suma=suma+30;
 		}else {
 			suma=suma+50;
 		}
-		suma=(float) (suma+Math.pow(yearrelease/4, 2));
+		suma=(float) (suma+Math.pow(yearrelease/400, 2));
 		
 		if(actor.charAt(0)=='J') {
 			suma=suma*2;
@@ -50,5 +50,19 @@ public class Film extends Item{
 			suma=(float) (suma*1.12);
 		}
 		return suma;
+	}
+	public static Film Maximo(Film a,Film b) {
+		if(a.getValue()==Math.max(a.getValue(), b.getValue())) {
+			return a;
+		}else {
+			return b;
+		}
+	}
+	public static Film Minimo(Film a, Film b) {
+		if(a.getValue()==Math.min(a.getValue(), b.getValue())) {
+			return a;
+		}else {
+			return b;
+		}
 	}
 }
