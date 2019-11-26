@@ -1,6 +1,6 @@
 package practica;
 
-public class Film extends Item{
+public class Film extends Item implements Product{
 	private String actor;
 	private int yearrelease;
 	
@@ -64,5 +64,10 @@ public class Film extends Item{
 		}else {
 			return b;
 		}
+	}
+
+	@Override
+	public String getID() {
+		return super.getName() + " "+ super.getAuthor();
 	}
 }

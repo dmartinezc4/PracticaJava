@@ -1,6 +1,6 @@
 package practica;
 
-public class Book extends Item{
+public class Book extends Item implements Product{
 	private int pages;
 	private String ISBN;
 	
@@ -67,5 +67,11 @@ public class Book extends Item{
 		}else {
 			return b;
 		}
+	}
+
+
+
+	public String getID() {
+		return ISBN;
 	}
 }

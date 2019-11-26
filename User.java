@@ -1,7 +1,7 @@
 package practica;
 import java.util.*;
 
-public class User implements Vectorinterfaces{
+public class User implements Product{
 
 	private String name;
 	private String surname;
@@ -94,6 +94,10 @@ public class User implements Vectorinterfaces{
 			}
 		}
 		return useritems.get(min);
+	}
+	
+	public String getID() {
+		return Integer.toString(getDni());
 	}
 
 }
