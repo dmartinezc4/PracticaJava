@@ -2,4 +2,4 @@
 Esta carpeta contiene los test de las clases utilizadas anteriormente
 
 ## Cobertura de Testeo
-Por ahora todos los metodos de los test funcionan sin dar error a la hora de run exceptuando los comentados (actualmente 2)
+Por ahora todos los metodos de los test funcionan sin dar error a la hora de run exceptuando los comentados (actualmente 1 el getValue de Film; pero haciendolo fuera de los tests el mismo objeto me da lo que pongo a la hora de hacer assertEquals)
