@@ -14,5 +14,11 @@ En esta carpeta esta lo necesario para que la practica funcione respecto a la in
 ## Test
 Esta carpeta contiene los test de la mayor parte de las clases y de las clases venideras; asi la primera pagina no estará tan llena de cosas que realmente solo sirven para comprobar
 
+## Concurrencia
+Para la concurrencia se ha utilizado la unica forma de hacerlo en clase, es decir, unas clases que hacen la funcion de añadir y retirar con synchronized siendo estas extended por un thread.
+
+## Patrones
+De todos los patrones disponibles me he decanteadp por el factoryMethod de un reloj pues me parece interesante a la par que util mostrar que se utilizar hasta cierto punto el util.calendar; es uno de los métodos que hemos dado en clase
+
 ### SonarLint
 SonarLint ha sido utilizado para la segunda y tercera parte de la practica, en mi ordenador de sobremesa pero no será utilizado en los ordenadores del aula, ya que la mayoria están capados y no deja instalar nuevo software. Respecto a este, está bastante bien para que te recuerde errores tontos que se te pueden pasar por alto o mejorar las tecnicas de diseño
